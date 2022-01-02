@@ -215,7 +215,7 @@ function connectElgatoStreamDeckSocket(inPort, inPluginUUID, inRegisterEvent, in
 
         }
         else if (event == "didReceiveSettings") {
-            settingsCache[context] = jsonPayload;
+            settingsCache[context] = jsonPayload.settings;
         }
 
         else if (event == "didReceiveGlobalSettings") {
