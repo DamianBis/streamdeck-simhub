@@ -22,10 +22,12 @@ jobs:
     - name: Determine Version
       id: version
       uses: gittools/actions/gitversion/execute@d10d9135cb3a77c160488dc7ed5899acf9b691f6
+    - run: mkdir Release
     - name: StreamDeck Distribution Tool
       uses: AdamCarballo/streamdeck-distribution-tool@97c0af35ffdb57f23413c1bab443287797e16c0b
       with:
         input: com.damianbis.simhub.sdPlugin
+        output: Release/
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
@@ -43,6 +45,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} 
-        asset_path: ./com.damianbis.simhub.sdPlugin
+        asset_path: ./Release/com.damianbis.simhub.sdPlugin
         asset_name: com.damianbis.simhub.sdPlugin
         asset_content_type: application/zip
