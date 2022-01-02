@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>com.damianbis.simhubPI</title>
+    <link rel="stylesheet" href="sdpi.css">
+    <script src="main_pi.js"></script>
+</head>
+
+<body>
+    <div class="sdpi-wrapper">
+
+        <div class="sdpi-item">
+            <div class="sdpi-item-label">Button Name</div>
+            <input class="sdpi-item-value" id="trigger" value="" placeholder="Enter Button Name">
+        </div>
+
+        <div class="sdpi-item">
+            <div class="sdpi-item-label">Telemetry Value</div>
+            <input class="sdpi-item-value" id="telemetry" value="" oninput="updateSettings()"
+                placeholder="Enter Simhub Telemetry Value">
+        </div>
+    </div>
+</body>
+
+<script language="javascript">
+    input = document.getElementById('trigger');
+    restrictChars(input, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_");
+
+    function restrictChars(input, chars) {
+        input.addEventListener("keypress", function (e) {
+            e.preventDefault();
+            if (e.keyCode !== 8 && e.keyCode !== 46) {
+                var character = String.fromCharCode(e.keyCode);
+                var isValid = chars.indexOf(character) != -1;
+                if (isValid) {
+                    input.value += character;
+                }
+            }
+            updateSettings();
+        });
+    }
+
+</script>
+
+</html>
