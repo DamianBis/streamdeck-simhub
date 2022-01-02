@@ -9,7 +9,7 @@
 let websocket = null,
     uuid = null,
     actionInfo = {};
-    settingsCache = {};
+settingsCache = {};
 
 function connectElgatoStreamDeckSocket(inPort, inUUID, inRegisterEvent, inInfo, inActionInfo) {
     uuid = inUUID;
@@ -22,8 +22,8 @@ function connectElgatoStreamDeckSocket(inPort, inUUID, inRegisterEvent, inInfo, 
 
     websocket.onopen = function () {
         const json = {
-            event:  inRegisterEvent,
-            uuid:   uuid,
+            event: inRegisterEvent,
+            uuid: uuid,
         };
         websocket.send(JSON.stringify(json));
         //requestSettings(uuid,"getGlobalSettings");
@@ -31,26 +31,26 @@ function connectElgatoStreamDeckSocket(inPort, inUUID, inRegisterEvent, inInfo, 
 
     websocket.onmessage = function (evt) {
         // Received message from Stream Deck
-        console.log("event",evt);
+        console.log("event", evt);
         const jsonObj = JSON.parse(evt.data);
         settings = settingsCache[uuid];
         const payload = jsonObj.payload;
-        if (jsonObj.event === 'didReceiveSettings')
-        {
+        if (jsonObj.event === 'didReceiveSettings') {
             settingsCache[uuid] = payload.settings;
             settings = settingsCache[uuid];
         }
-
-
 
         const el = document.querySelector('.sdpi-wrapper');
         el && el.classList.remove('hidden');
     };
 
-    if (settings.trigger)
-    {
+    if (settings.trigger) {
         var trigger = document.getElementById('trigger');
         trigger.value = settings.trigger;
+    }
+    if (settings.telemetry) {
+        var telemetry = document.getElementById('telemetry');
+        telemetry.value = settings.telemetry;
     }
 
 }
@@ -60,7 +60,9 @@ function updateSettings() {
     if (websocket) {
         let payload = {};
         const trigger = document.getElementById('trigger').value;
+        const telemetry = document.getElementById('telemetry').value;
         payload.trigger = trigger;
+        payload.telemetry = telemetry
 
         const json = {
             "event": "setSettings",

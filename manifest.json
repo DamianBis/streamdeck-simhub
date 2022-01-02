@@ -1,42 +1,54 @@
 {
   "Actions": [
-    
-  {
+    {
       "Icon": "plugin/resources/pluginIcon",
-      "Name": "Effects",
+      "Name": "SimHub Effects",
       "States": [
-          {
-            "Image": "plugin/resources/simhub_button",
-            "TitleAlignment": "bottom",
-            "FontSize": "10"
-          }
+        {
+          "Image": "plugin/resources/simhub_button",
+          "TitleAlignment": "bottom",
+          "FontSize": "10"
+        }
       ],
       "SupportedInMultiActions": true,
       "Tooltip": "Simhub Control Trigger",
-      "UUID": "com.baptiewright.simhub.control"
+      "UUID": "com.damianbis.simhub.control"
+    },
+    {
+      "Icon": "plugin/resources/flag",
+      "Name": "SimHub Flags",
+      "States": [
+        {
+          "Image": "plugin/resources/green_flag",
+          "TitleAlignment": "bottom",
+          "FontSize": "10"
+        }
+      ],
+      "SupportedInMultiActions": true,
+      "Tooltip": "Simhub Flag",
+      "UUID": "com.damianbis.simhub.flag"
+    }
+  ],
+  "Author": "Damian Bisignano",
+  "CodePath": "plugin/main.html",
+  "Description": "Remotely Trigger Simhub Control Events",
+  "Name": "Simhub Controller",
+  "Icon": "plugin/resources/pluginIcon",
+  "URL": "https://github.com/DamianBis/streamdeck-simhub",
+  "PropertyInspectorPath": "propertyinspector/main_pi.html",
+  "Version": "0.1",
+  "OS": [
+    {
+      "MinimumVersion": "10.12",
+      "Platform": "mac"
+    },
+    {
+      "Platform": "windows",
+      "MinimumVersion": "10"
+    }
+  ],
+  "SDKVersion": 2,
+  "Software": {
+    "MinimumVersion": "4.1"
   }
-],
-"Author": "Baptiewright Designs",
-"CodePath": "plugin/main.html",
-"Description": "Remotely Trigger Simhub Control Events",
-"Name": "Simhub Controller",
-"Icon": "plugin/resources/pluginIcon",
-"URL": "http://www.baptiewright.com",
-"PropertyInspectorPath": "propertyinspector/main_pi.html",
-"Version": "0.1",
-"OS": [
-{
-  "MinimumVersion" : "10.12",
-  "Platform": "mac"
-},
-  {
-    "Platform": "windows",
-    "MinimumVersion" : "10"
-  }
-],
-"SDKVersion": 2,
-"Software": {
-  "MinimumVersion" : "4.1"
-}
-
 }
